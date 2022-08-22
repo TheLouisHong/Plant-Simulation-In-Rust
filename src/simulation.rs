@@ -13,10 +13,10 @@ impl Simulation {
 
     pub fn recv(&mut self, input: &str) {
         //println!("Received: {}", input);
-        print!("[SimRPC] ");
+        print!("[SimRPC][{:.1}]: ", self.time);
         match input {
             "ping" => {
-                println!("Pong at {}!", self.time);
+                println!("Pong!");
             }
             _ => {
                 println!("Unknown RPC");

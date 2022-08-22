@@ -56,13 +56,21 @@ impl Command for PingCommand {
 }
 
 
-
 fn main() {
     
 
     let commands : Vec<Box<dyn Command>>= vec![
         Box::new(HelpCommand), Box::new(ExitCommand), Box::new(PingCommand)
     ];
+
+    println!("The plant is simulating on another thread. Ping it with the 'ping' command.");
+
+    // todo: how to make list command?
+    // print commands
+    println!("Commands:");
+    for command in &commands {
+        println!("{}: {}", command.name(), command.help());
+    }
 
     // mpsc
     let (tx, rx): (Sender<&str>, Receiver<&str>)= mpsc::channel();
